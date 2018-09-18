@@ -96,7 +96,7 @@ CONDOP : (And | Or);
 EQOP : (Eq | Neq);
 RELOP : (Greater | Less | Geq | Leq);
 BINOP : (ARITHOP | RELOP | EQOP | CONDOP);
-BOOLLITERAL : ("true" | "false");
+//BOOLLITERAL : ("true" | "false");
 
 LCURLY options { paraphrase = "{"; } : "{";
 RCURLY options { paraphrase = "}"; } : "}";
@@ -110,12 +110,14 @@ SEMI : ';';
 // Note that here, the {} syntax allows you to literally command the lexer
 // to skip mark this token as skipped, or to advance to the next line
 // by directly adding Java commands.
-WS_ : (' ' | '\n' {newline();}) {_ttype = Token.SKIP; };
+WS_ : (' ' | '\t' | '\n' {newline();}) {_ttype = Token.SKIP; };
 SL_COMMENT : "//" (~'\n')* '\n' {_ttype = Token.SKIP; newline (); };
+//BLOCK_COMMENT : '/*' .*? '*/' {_ttype = Token.SKIP; newline (); };
 
 //CHAR : '\'' (ESC|~('\'' | '\n' | '"')) '\'';
 CHAR : '\'' (ESC | ALPHA | DIGIT) '\'';
 STRING : '"' (ESC|~('"' | '\''))* '"';
+//STRING : '"' (CHAR)* '"';
 
 protected ESC :  '\\' ('n'|'"'|'t'|'\\'|'\'');
 

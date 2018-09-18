@@ -32,6 +32,12 @@ class Main {
                //case DecafScannerTokenTypes.KEYWORD:
                //  type = "";
                //  break;
+               case DecafScannerTokenTypes.TRUE:
+                type = " BOOLEANLITERAL";
+                break;
+               case DecafScannerTokenTypes.FALSE:
+                type = " BOOLEANLITERAL";
+                break;
                case DecafScannerTokenTypes.CHAR:
                 type = " CHARLITERAL";
                 break;
@@ -41,9 +47,9 @@ class Main {
                case DecafScannerTokenTypes.STRING:
                  type = " STRINGLITERAL";
                  break;
-               case DecafScannerTokenTypes.BOOLLITERAL:
-                type = " BOOLEANLITERAL";
-                break;
+               //case DecafScannerTokenTypes.BOOLLITERAL:
+               // type = " BOOLEANLITERAL";
+               // break;
                case DecafScannerTokenTypes.ID:
                 type = " IDENTIFIER";
                 break;
