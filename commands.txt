@@ -1,0 +1,2 @@
+./run.sh --target=scan tests/scanner/input/char[num]
+

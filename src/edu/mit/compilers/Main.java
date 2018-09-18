@@ -27,9 +27,28 @@ class Main {
               String type = "";
               String text = token.getText();
               switch (token.getType()) {
-               // TODO: add strings for the other types here...
+               // TODO: add strings for the other types here...      i
+               
+               //case DecafScannerTokenTypes.KEYWORD:
+               //  type = "";
+               //  break;
+               case DecafScannerTokenTypes.CHAR:
+                type = " CHARLITERAL";
+                break;
+               //case DecafScannerTokenTypes.LITERAL:
+               //  type = " LITERAL";
+               //  break;
+               case DecafScannerTokenTypes.STRING:
+                 type = " STRINGLITERAL";
+                 break;
+               case DecafScannerTokenTypes.BOOLLITERAL:
+                type = " BOOLEANLITERAL";
+                break;
                case DecafScannerTokenTypes.ID:
                 type = " IDENTIFIER";
+                break;
+               case DecafScannerTokenTypes.INTLITERAL:
+                type = " INTLITERAL";
                 break;
               }
               outputStream.println(token.getLine() + type + " " + text);
