@@ -3,3 +3,4 @@ migrate.sh
 autogen/
 classes/
 dist/
+.DS_Store
