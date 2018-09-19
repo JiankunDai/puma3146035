@@ -17,6 +17,7 @@ options
 
 tokens 
 {
+  "class";
   "bool";
   "break";
   "continue";
@@ -56,47 +57,24 @@ tokens
   }
 }
 
-//Keywords
-
-//BOOL : "bool";
-//BREAK : "break";
-//IMPORT : "import";
-//CONTINUE : "continue";
-//ELSE : "else"; 
-//protected FALSE : "false";
-//FOR : "for"; 
-//WHILE : "while";
-//IF : "if";
-//INT : "int";
-//RETURN : "return";
-//LEN : "len";
-//protected TRUE : "true";
-//VOID : "void"; 
-
-//KEYWORD : (BOOL | BREAK | IMPORT | CONTINUE | ELSE | FOR | WHILE | IF | INT | RETURN | LEN | VOID);
-
 EQ : "=";
-protected And : "&&";
-protected Or : "||";
-protected Eq : "==";
-protected Neq : "!=";
-protected Greater : ">";
-protected Less : "<";
-protected Geq : ">=";
-protected Leq : "<=";
-protected Plus : "+";
-protected Minus : "-";
-protected Mult : "*";
-protected Div : "/";
-protected Mod : "%";
-
-protected ARITHOP : (Plus | Minus | Mult | Div | Mod);
-INCREMENT : ("++" | "--");
-CONDOP : (And | Or);
-EQOP : (Eq | Neq);
-RELOP : (Greater | Less | Geq | Leq);
-BINOP : (ARITHOP | RELOP | EQOP | CONDOP);
-//BOOLLITERAL : ("true" | "false");
+And : "&&";
+Or : "||";
+Eq : "==";
+Neq : "!=";
+Greater : ">";
+Less : "<";
+Geq : ">=";
+Leq : "<=";
+Plus : "+";
+Minus : "-";
+Mult : "*";
+Div : "/";
+Mod : "%";
+PlusPlus: "++";
+MinusMinus: "--";
+PlusEq: "+=";
+MinusEq: "-=";
 
 LCURLY options { paraphrase = "{"; } : "{";
 RCURLY options { paraphrase = "}"; } : "}";
@@ -120,6 +98,7 @@ STRING : '"' (ESC|~('"' | '\''))* '"';
 //STRING : '"' (CHAR)* '"';
 
 protected ESC :  '\\' ('n'|'"'|'t'|'\\'|'\'');
+protected EXCL : ~('\'' | "\n" | '"' | '\t');
 
 protected DIGIT : '0'..'9';
 protected ALPHA : ('a'..'z' | 'A'..'Z' | '_');

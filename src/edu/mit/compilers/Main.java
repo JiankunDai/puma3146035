@@ -26,6 +26,7 @@ class Main {
                  token = scanner.nextToken()) {
               String type = "";
               String text = token.getText();
+              //System.err.println(token.getType());
               switch (token.getType()) {
                // TODO: add strings for the other types here...      i
                
@@ -41,9 +42,6 @@ class Main {
                case DecafScannerTokenTypes.CHAR:
                 type = " CHARLITERAL";
                 break;
-               //case DecafScannerTokenTypes.LITERAL:
-               //  type = " LITERAL";
-               //  break;
                case DecafScannerTokenTypes.STRING:
                  type = " STRINGLITERAL";
                  break;
