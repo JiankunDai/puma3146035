@@ -58,6 +58,8 @@ tokens
 }
 
 EQ : "=";
+Question: "?";
+Colon: ":";
 And : "&&";
 Or : "||";
 Eq : "==";
@@ -89,16 +91,14 @@ SEMI : ';';
 // to skip mark this token as skipped, or to advance to the next line
 // by directly adding Java commands.
 WS_ : (' ' | '\t' | '\n' {newline();}) {_ttype = Token.SKIP; };
-SL_COMMENT : "//" (~'\n')* '\n' {_ttype = Token.SKIP; newline (); };
-//BLOCK_COMMENT : '/*' .*? '*/' {_ttype = Token.SKIP; newline (); };
+SL_COMMENT : "//" (~'\n')* ('\n') {_ttype = Token.SKIP; newline (); };
+BLOCK_COMMENT : "/*" (options {greedy=false;} : .)* "*/" {_ttype = Token.SKIP; newline (); };
 
-//CHAR : '\'' (ESC|~('\'' | '\n' | '"')) '\'';
-CHAR : '\'' (ESC | ALPHA | DIGIT) '\'';
-STRING : '"' (ESC|~('"' | '\''))* '"';
-//STRING : '"' (CHAR)* '"';
+CHAR : '\'' (ESC | EXCL) '\'';
+STRING : '"' (ESC| EXCL)* '"';
 
 protected ESC :  '\\' ('n'|'"'|'t'|'\\'|'\'');
-protected EXCL : ~('\'' | "\n" | '"' | '\t');
+protected EXCL : ~('\''|'\n'|'\t'|'"'|'\\');
 
 protected DIGIT : '0'..'9';
 protected ALPHA : ('a'..'z' | 'A'..'Z' | '_');
@@ -109,6 +109,3 @@ protected DECIMALLITERAL : DIGIT (DIGIT)*;
 protected HEXLITERAL : "0x" HEXDIGIT (HEXDIGIT)*;
 INTLITERAL : (DECIMALLITERAL | HEXLITERAL);
 ID : ALPHA (ALPHANUM)*;
-//LITERAL : (INTLITERAL | CHAR | BOOLLITERAL);
-
-

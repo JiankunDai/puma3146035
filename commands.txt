@@ -1,3 +1,4 @@
 ./run.sh --target=scan tests/scanner/input/char[num]
 ./run.sh --target=scan --debug tests/scanner/input/char[num]
+./run.sh --target=scan --debug tests/parser/legal/
 
